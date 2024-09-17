@@ -3,6 +3,8 @@ import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import AppStyles from "../../styles/log_in_styles";
 import Signup from "../screens/sign_up_page";
+import { useNavigation } from "@react-navigation/native";
+import { StackActions } from '@react-navigation/native';
 
 
 
@@ -11,44 +13,53 @@ export default function App() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
   const [isSignUpVisible, setIsSignUpVisible] = useState(false);
-  
+
+  const navigation = useNavigation();
+
   const handleLogin = () => {
-    // Handle login logic here, e.g., send username and password to server
-    console.log('Username:', username);
-    console.log('Password:', password);
+    // Dummy login auth. If login is successful:
+    if (username === "admin" && password === "password") { // Example validation
+      navigation.dispatch(
+        StackActions.replace('Dashboard')
+      );
+      setUsername(''); // Clear username input
+      setPassword(''); // Clear password input
+    } else {
+      console.log('Invalid credentials');
+    }
   };
 
   const handleSignup = () => {
     setIsSignUpVisible(true); // Show the Signup component
   };
-  
+
 
   return (
     <View style={AppStyles.container}>
 
       {isSignUpVisible ? ( // Conditionally render Signup
-        <Signup onGoBack={() => setIsSignUpVisible(false)} /> 
+        <Signup onGoBack={() => setIsSignUpVisible(false)} />
       ) : (
         <>
-          <TextInput 
+          <TextInput
             style={AppStyles.userInput}
             placeholder='Username'
             onChangeText={(val) => setUsername(val)}
           />
 
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
-            <TextInput 
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TextInput
               style={[AppStyles.userInput]} // Take up available space
               placeholder='Password'
               onChangeText={(val) => setPassword(val)}
               secureTextEntry={!showPassword} // Toggle password visibility
             />
-            <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
-            onPress={() => setShowPassword(!showPassword)}>
-              <Ionicons 
-                name={showPassword ?  'eye-outline' : 'eye-off-outline'} // Toggle icon
-                size={24} 
-                color="black" 
+            <TouchableOpacity style={{ position: 'absolute', right: 30 }}
+              onPress={() => setShowPassword(!showPassword)}>
+              <Ionicons
+                name={showPassword ? 'eye-outline' : 'eye-off-outline'} // Toggle icon
+                size={24}
+                color="black"
               />
             </TouchableOpacity>
           </View>
@@ -61,11 +72,11 @@ export default function App() {
               <Text style={AppStyles.textCallSignUp}>Sign Up</Text>
             </TouchableOpacity>
           </Text>
-          
+
         </>
       )}
     </View>
   );
-  
+
 }
 
