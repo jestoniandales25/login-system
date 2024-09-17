@@ -30,14 +30,12 @@ export default function App() {
         <Signup onGoBack={() => setIsSignUpVisible(false)} /> 
       ) : (
         <>
-
-          <Text>Username:</Text>
           <TextInput 
             style={AppStyles.userInput}
             placeholder='Username'
             onChangeText={(val) => setUsername(val)}
           />
-          <Text>Password:</Text>
+
           <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
             <TextInput 
               style={[AppStyles.userInput]} // Take up available space
@@ -48,7 +46,7 @@ export default function App() {
             <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
             onPress={() => setShowPassword(!showPassword)}>
               <Ionicons 
-                name={showPassword ? 'eye-off-outline' : 'eye-outline'} // Toggle icon
+                name={showPassword ?  'eye-outline' : 'eye-off-outline'} // Toggle icon
                 size={24} 
                 color="black" 
               />
@@ -59,8 +57,8 @@ export default function App() {
             <Text style={AppStyles.text}>Login</Text>
           </TouchableOpacity>
           <Text style={AppStyles.textOut}>Don't have an account?
-            <TouchableOpacity  onPress={handleSignup}>
-              <Text style={AppStyles.textCall}>Sign Up</Text>
+            <TouchableOpacity onPress={handleSignup}>
+              <Text style={AppStyles.textCallSignUp}>Sign Up</Text>
             </TouchableOpacity>
           </Text>
           
