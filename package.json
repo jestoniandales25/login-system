@@ -15,7 +15,11 @@
     "react-native": "0.74.5",
     "react-native-vector-icons": "^10.2.0",
     "typescript": "~5.3.3",
-    "@types/react": "~18.2.79"
+    "@types/react": "~18.2.79",
+    "react-native-web": "~0.19.10",
+    "react-dom": "18.2.0",
+    "@expo/metro-runtime": "~3.2.3",
+    "expo-router": "~3.5.23"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
