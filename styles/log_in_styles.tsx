@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const AppStyles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -14,6 +15,7 @@ const AppStyles = StyleSheet.create({
     margin: 16,
     width: 250,
     borderRadius: 8,
+    height: 48
   },
   button: {
     marginTop: 16,
@@ -23,7 +25,7 @@ const AppStyles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     backgroundColor: 'black',
-    width: 180,
+    width: 250,
     height: 50,
   },
   text: {
