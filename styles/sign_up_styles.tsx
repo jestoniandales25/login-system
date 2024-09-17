@@ -41,6 +41,13 @@ const signupStyles = StyleSheet.create({
     marginTop: 16,
     color: 'black',
   },
+  textCallLogin: {
+    paddingLeft: 10,
+    textDecorationLine: 'underline',
+    fontSize: 18,
+    letterSpacing: 0.25,
+    color: 'black',
+  },
   text: {
     fontSize: 16,
     lineHeight: 21,
