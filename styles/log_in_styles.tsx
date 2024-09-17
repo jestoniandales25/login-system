@@ -37,18 +37,15 @@ const AppStyles = StyleSheet.create({
   },
   textOut: {
     fontSize: 16,
-    lineHeight: 21, 
     letterSpacing: 0.25,
-    marginTop: 60,
-    marginBottom: 16,
     color: 'black',
   },
-  textCall: {
+  textCallSignUp: {
     paddingLeft: 10,
     textDecorationLine: 'underline',
-    fontSize: 16,
-    lineHeight: 21, 
+    fontSize: 18,
     letterSpacing: 0.25,
+    marginTop: 16,
     color: 'black',
   },
 });
