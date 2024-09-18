@@ -1,19 +1,19 @@
 import React, { useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
-import dashboardStyles from '../../styles/dashboard_styles'; // Importing the styles
-import { useNavigation } from '@react-navigation/native'; // Import navigation hook
+import dashboardStyles from '../../styles/dashboard_styles';
+import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 
 
 export default function Dashboard() {
-    const navigation = useNavigation(); // Initialize navigation
+    const navigation = useNavigation();
 
     // Create animated values for opacity and translateY
-    const fadeAnim = useRef(new Animated.Value(0)).current; // Initial opacity 0
-    const floatAnim = useRef(new Animated.Value(30)).current; // Initial translateY 30
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+    const floatAnim = useRef(new Animated.Value(30)).current;
 
-    const fadeAnimButton = useRef(new Animated.Value(0)).current; // Initial opacity 0 for button
-    const floatAnimButton = useRef(new Animated.Value(30)).current; // Initial translateY 30 for button
+    const fadeAnimButton = useRef(new Animated.Value(0)).current;
+    const floatAnimButton = useRef(new Animated.Value(30)).current;
 
     useEffect(() => {
         Animated.sequence([
@@ -43,7 +43,6 @@ export default function Dashboard() {
     }, [fadeAnim, floatAnim, fadeAnimButton, floatAnimButton]);
 
     const handleLogout = () => {
-        // Navigate back to the Login screen
         navigation.dispatch(
             StackActions.replace('Log In')
         );

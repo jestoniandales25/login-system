@@ -17,48 +17,47 @@ export default function SignUp() {
 
   const handleLogin = () => {
     navigation.dispatch(
-        StackActions.replace('Log In')
+      StackActions.replace('Log In')
     );
   };
-    const handleSignUp = () => {
-      if (!username || !email || !password || !confirmPassword) {
-        Alert.alert('Error', 'Please fill in all fields!');
-        return;
-      }
-  
-      if (password !== confirmPassword) {
-        Alert.alert('Error', 'Passwords do not match!');
-        return;
-      }
-      console.log('Signing up with:', { username, email, password }); 
-      Alert.alert('Success', 'Sign up successful! You can now log in.');
-      navigation.dispatch(
-        StackActions.replace('Log In')
-      );
+  const handleSignUp = () => {
+    if (!username || !email || !password || !confirmPassword) {
+      Alert.alert('Error', 'Please fill in all fields!');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match!');
+      return;
+    }
+    console.log('Signing up with:', { username, email, password }); 
+    navigation.dispatch(
+      StackActions.replace('Dashboard')
+    );
     
 };
 
   return (
     <View style={signupStyles.container}>
       <Text style={signupStyles.textHeader}>Sign Up</Text>
-      <TextInput 
+      <TextInput
         style={signupStyles.signupInput}
         placeholder='Username'
         onChangeText={setUsername}
       />
-      <TextInput 
+      <TextInput
         style={signupStyles.signupInput}
         placeholder='Email'
         onChangeText={setEmail}
       />
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
-        <TextInput 
-          style={[signupStyles.signupInput]} 
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <TextInput
+          style={[signupStyles.signupInput]}
           placeholder='Password'
           secureTextEntry={!showPassword}
           onChangeText={setPassword}
         />
-        <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
+        <TouchableOpacity style={{ position: 'absolute', right: 30 }}
           onPress={() => setShowPassword(!showPassword)}>
           <Ionicons 
             name={showPassword ?  'eye-outline' : 'eye-off-outline'}
@@ -67,20 +66,20 @@ export default function SignUp() {
           />
         </TouchableOpacity>
       </View>
-      
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
-        <TextInput 
-          style={[signupStyles.signupInput]} 
+
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <TextInput
+          style={[signupStyles.signupInput]}
           placeholder='Confirm Password'
           secureTextEntry={!showConfirmPassword}
           onChangeText={setConfirmPassword}
         />
-        <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
+        <TouchableOpacity style={{ position: 'absolute', right: 30 }}
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-          <Ionicons 
-            name={showConfirmPassword ?  'eye-outline' : 'eye-off-outline'} // Toggle icon
-            size={24} 
-            color="black" 
+          <Ionicons
+            name={showConfirmPassword ? 'eye-outline' : 'eye-off-outline'}
+            size={24}
+            color="black"
           />
         </TouchableOpacity>
       </View>
