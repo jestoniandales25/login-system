@@ -1,22 +1,40 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import signupStyles from "../../styles/sign_up_styles";
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 
 
 export default function SignUp() {
-
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    // Navigate back to the Login screen
     navigation.dispatch(
         StackActions.replace('Log In')
     );
+  };
+    const handleSignUp = () => {
+      if (!username || !email || !password || !confirmPassword) {
+        Alert.alert('Error', 'Please fill in all fields!');
+        return;
+      }
+  
+      if (password !== confirmPassword) {
+        Alert.alert('Error', 'Passwords do not match!');
+        return;
+      }
+      console.log('Signing up with:', { username, email, password }); 
+      Alert.alert('Success', 'Sign up successful! You can now log in.');
+      navigation.dispatch(
+        StackActions.replace('Log In')
+      );
     
 };
 
@@ -26,21 +44,24 @@ export default function SignUp() {
       <TextInput 
         style={signupStyles.signupInput}
         placeholder='Username'
+        onChangeText={setUsername}
       />
       <TextInput 
         style={signupStyles.signupInput}
         placeholder='Email'
+        onChangeText={setEmail}
       />
       <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
         <TextInput 
           style={[signupStyles.signupInput]} 
           placeholder='Password'
-          secureTextEntry={!showPassword} // Toggle password visibility
+          secureTextEntry={!showPassword}
+          onChangeText={setPassword}
         />
         <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
           onPress={() => setShowPassword(!showPassword)}>
           <Ionicons 
-            name={showPassword ?  'eye-outline' : 'eye-off-outline'} // Toggle icon
+            name={showPassword ?  'eye-outline' : 'eye-off-outline'}
             size={24} 
             color="black" 
           />
@@ -51,7 +72,8 @@ export default function SignUp() {
         <TextInput 
           style={[signupStyles.signupInput]} 
           placeholder='Confirm Password'
-          secureTextEntry={!showConfirmPassword} // Toggle password visibility
+          secureTextEntry={!showConfirmPassword}
+          onChangeText={setConfirmPassword}
         />
         <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
@@ -63,8 +85,8 @@ export default function SignUp() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={signupStyles.button}>
-        <Text style={signupStyles.text}>Login</Text>
+      <TouchableOpacity style={signupStyles.button} onPress={handleSignUp}>
+        <Text style={signupStyles.text}>Sign Up</Text>
       </TouchableOpacity>
       <Text style={signupStyles.textOut}>Already have an account?
         <TouchableOpacity onPress={handleLogin}>
