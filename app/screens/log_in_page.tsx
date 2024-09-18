@@ -16,11 +16,21 @@ export default function App() {
   const handleLogin = () => {
     let isValid = true;
 
-    if (username !== "admin") {
+    setUsernameError('');
+    setPasswordError('');
+
+    if (username === '') {
+      setUsernameError('Please Enter a Username');
+      isValid = false;
+    } else if (username !== "admin") {
       setUsernameError('Invalid Username');
       isValid = false;
     }
-    if (password !== "password") {
+
+    if (password === '') {
+      setPasswordError('Please Enter a Password');
+      isValid = false;
+    } else if (password !== "password") {
       setPasswordError('Invalid Password');
       isValid = false;
     }
