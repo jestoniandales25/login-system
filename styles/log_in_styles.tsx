@@ -20,15 +20,13 @@ const AppStyles = StyleSheet.create({
   uerrorText: {
     color: 'red',
     fontSize: 12,
-    marginBottom: 1500,
-    marginRight: 160,
+    marginBottom: 115,
     position: 'absolute',
   },
   perrorText: {
     color: 'red',
     fontSize: 12,
     marginTop: 45,
-    marginRight: 160,
     position: 'absolute',
   },
   button: {
