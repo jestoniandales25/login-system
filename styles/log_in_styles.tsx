@@ -17,6 +17,20 @@ const AppStyles = StyleSheet.create({
     borderRadius: 8,
     height: 48
   },
+  uerrorText: {
+    color: 'red',
+    fontSize: 12,
+    marginBottom: 115,
+    marginRight: 160,
+    position: 'absolute',
+  },
+  perrorText: {
+    color: 'red',
+    fontSize: 12,
+    marginTop: 45,
+    marginRight: 160,
+    position: 'absolute',
+  },
   button: {
     marginTop: 16,
     alignItems: 'center',
