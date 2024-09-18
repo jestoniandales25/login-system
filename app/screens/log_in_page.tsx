@@ -9,18 +9,27 @@ export default function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const [usernameError, setUsernameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    // Dummy login auth. If login is successful:
-    if (username === "admin" && password === "password") { // Example validation
+    let isValid = true;
+
+    if (username !== "admin") {
+      setUsernameError('Invalid Username');
+      isValid = false;
+    }
+    if (password !== "password") {
+      setPasswordError('Invalid Password');
+      isValid = false;
+    }
+
+    if (isValid) {
       navigation.dispatch(
-        StackActions.replace('Dashboard')
-      );
-      setUsername(''); // Clear username input
-      setPassword(''); // Clear password input
-    } else {
-      console.log('Invalid credentials');
+        StackActions.replace('Dashboard'));
+      setUsername('');
+      setPassword('');
     }
   };
 
@@ -38,6 +47,9 @@ export default function App() {
         placeholder='Username'
         onChangeText={(val) => setUsername(val)}
       />
+
+      {usernameError ? <Text style={AppStyles.uerrorText}>{usernameError}</Text> : null}
+
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <TextInput
           style={[AppStyles.userInput]} // Take up available space
@@ -54,6 +66,9 @@ export default function App() {
           />
         </TouchableOpacity>
       </View>
+
+      {passwordError ? <Text style={AppStyles.perrorText}>{passwordError}</Text> : null}
+
       <TouchableOpacity style={AppStyles.button} onPress={handleLogin}>
         <Text style={AppStyles.text}>Login</Text>
       </TouchableOpacity>
