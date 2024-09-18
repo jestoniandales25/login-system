@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import signupStyles from "../../styles/sign_up_styles";
 import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import { useNavigation } from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
 
 
-const signup = ({ onGoBack }) => { 
+export default function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    // Navigate back to the Login screen
+    navigation.dispatch(
+        StackActions.replace('Log In')
+    );
+    
+};
 
   return (
     <View style={signupStyles.container}>
@@ -56,12 +67,10 @@ const signup = ({ onGoBack }) => {
         <Text style={signupStyles.text}>Login</Text>
       </TouchableOpacity>
       <Text style={signupStyles.textOut}>Already have an account?
-        <TouchableOpacity onPress={onGoBack}>
+        <TouchableOpacity onPress={handleLogin}>
           <Text style={signupStyles.textCallLogin}>Login</Text>
         </TouchableOpacity>
       </Text>
     </View>
   );
 };
-
-export default signup
