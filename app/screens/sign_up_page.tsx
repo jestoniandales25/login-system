@@ -13,52 +13,51 @@ export default function SignUp() {
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    // Navigate back to the Login screen
     navigation.dispatch(
-        StackActions.replace('Log In')
+      StackActions.replace('Log In')
     );
-    
-};
+
+  };
 
   return (
     <View style={signupStyles.container}>
       <Text style={signupStyles.textHeader}>Sign Up</Text>
-      <TextInput 
+      <TextInput
         style={signupStyles.signupInput}
         placeholder='Username'
       />
-      <TextInput 
+      <TextInput
         style={signupStyles.signupInput}
         placeholder='Email'
       />
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
-        <TextInput 
-          style={[signupStyles.signupInput]} 
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <TextInput
+          style={[signupStyles.signupInput]}
           placeholder='Password'
           secureTextEntry={!showPassword} // Toggle password visibility
         />
-        <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
+        <TouchableOpacity style={{ position: 'absolute', right: 30 }}
           onPress={() => setShowPassword(!showPassword)}>
-          <Ionicons 
-            name={showPassword ?  'eye-outline' : 'eye-off-outline'} // Toggle icon
-            size={24} 
-            color="black" 
+          <Ionicons
+            name={showPassword ? 'eye-outline' : 'eye-off-outline'} // Toggle icon
+            size={24}
+            color="black"
           />
         </TouchableOpacity>
       </View>
-      
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}> 
-        <TextInput 
-          style={[signupStyles.signupInput]} 
+
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <TextInput
+          style={[signupStyles.signupInput]}
           placeholder='Confirm Password'
           secureTextEntry={!showConfirmPassword} // Toggle password visibility
         />
-        <TouchableOpacity  style={{ position: 'absolute', right: 30 }}
+        <TouchableOpacity style={{ position: 'absolute', right: 30 }}
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-          <Ionicons 
-            name={showConfirmPassword ?  'eye-outline' : 'eye-off-outline'} // Toggle icon
-            size={24} 
-            color="black" 
+          <Ionicons
+            name={showConfirmPassword ? 'eye-outline' : 'eye-off-outline'} // Toggle icon
+            size={24}
+            color="black"
           />
         </TouchableOpacity>
       </View>

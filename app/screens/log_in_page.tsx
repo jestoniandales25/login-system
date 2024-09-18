@@ -27,9 +27,9 @@ export default function App() {
   const handleSignup = () => {
     // Navigate to the Sign Up screen
     navigation.dispatch(
-        StackActions.replace('Sign Up')
+      StackActions.replace('Sign Up')
     );
-};
+  };
 
   return (
     <View style={AppStyles.container}>
